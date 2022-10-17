@@ -3,6 +3,8 @@ let matchedPairs = 0;
 let cardOne, cardTwo;
 let disableDeck = false;
 
+let mySound = new Audio('audio/cheering.wav');
+
 function flipCard(evt) { // take an event object's as a scoped variable
     const clickedCard = evt.target; // set the event's target DOM element as a variable
     if (cardOne !== clickedCard && !disableDeck) { // make sure that the current variable cardOne is not the same value as the clickedCard, AND that the deck is NOT disabled
@@ -27,6 +29,7 @@ function matchCards(img1, img2) {
         if (matchedPairs == 8) { // if your number of matches is 8, you've made all the matches! Game Won!
             console.log('YOU WIN!');
             confetti(); // execute the confetti function when the user wins the game
+            mySound.play(); // play the sound when the user wins the game
             return; // for now, lets call this game over, end this function and do nothing else.
         }
         // everything below will execute if the game has not yet been won...
